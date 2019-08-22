@@ -8,7 +8,7 @@ import com.example.repositoriesandroid.R
 import com.example.repositoriesandroid.model.Repository
 import kotlinx.android.synthetic.main.list_item_repository.view.*
 
-class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>(){
+class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
     private var listRepository: MutableList<Repository> = mutableListOf()
 
     var itemListener: itemClickListener? = null
@@ -19,7 +19,8 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>(){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_repository, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_item_repository, parent, false)
         return ViewHolder(view)
     }
 

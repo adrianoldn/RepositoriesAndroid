@@ -19,7 +19,7 @@ import retrofit2.Response
 class ListActivity : AppCompatActivity() {
 
     val dao = RepositoryDao()
-    lateinit var adapter : RepositoryAdapter
+    lateinit var adapter: RepositoryAdapter
     private val APP_BAR_NAME = "Repositories List"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +37,12 @@ class ListActivity : AppCompatActivity() {
                 val intent = Intent(this@ListActivity, DetailViewActivity::class.java)
                 intent.putExtra("repository", repository)
                 startActivity(intent)
+                finish()
             }
         }
     }
+
+
 
     override fun onResume() {
         super.onResume()

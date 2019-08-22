@@ -1,12 +1,14 @@
 package com.example.repositoriesandroid.ui
 
-import android.icu.text.CaseMap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.example.repositoriesandroid.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.repositoriesandroid.model.Repository
 import kotlinx.android.synthetic.main.activity_detail_view.*
+import android.content.Intent
+import android.R
+
+
 
 class DetailViewActivity : AppCompatActivity() {
 
@@ -15,10 +17,10 @@ class DetailViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupButtonBack()
         title = APP_BAR_NAME
         repository = intent.extras?.get("repository") as Repository
-        setContentView(R.layout.activity_detail_view)
+        setupButtonBack()
+        setContentView(com.example.repositoriesandroid.R.layout.activity_detail_view)
         setViews()
     }
 
@@ -39,8 +41,19 @@ class DetailViewActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onBackPressed() {
+        startActivity(
+            Intent(
+                this,
+                ListActivity::class.java
+            )
+        )
+        finishAffinity()
+        return
+    }
+
     private fun setViews() {
-        if(repository != null) {
+        if (repository != null) {
             txt_repository_name.text = repository?.name
             txt_desccription.text = repository?.description
             txt_fullname.text = repository?.full_name
